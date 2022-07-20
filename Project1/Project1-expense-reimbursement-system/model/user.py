@@ -1,22 +1,24 @@
 class User:
-    def __init__(self, username, password_1, first_name, last_name, gender, phone_number, email_address, role_1):
+    def __init__(self, user_id, username, password, first_name, last_name, user_role, email):
+        self.user_id = user_id
         self.username = username
-        self.password_1 = password_1
+        self.password = password
         self.first_name = first_name
         self.last_name = last_name
-        self.gender = gender
-        self.phone_number = phone_number
-        self.email_address = email_address
-        self.role_1 = role_1
+        self.user_role = user_role
+        self.email = email
+        # self.gender = gender
+        # self.phone_number = phone_number
+
+
 
     def to_dict(self):
         return {
+            "user_id" : self.user_id,
             "username": self.username,
-            "password_1": self.password_1,
+            "password": self.password,
             "first_name": self.first_name,
             "last_name": self.last_name,
-            "gender": self.gender,
-            "phone_number": self.phone_number,
-            "email_address": self.email_address,
-            "role_1": self.role_1
-            }
+            "user_role": self.user_role,
+            "email": self.email
+        }
