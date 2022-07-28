@@ -7,33 +7,6 @@ rc = Blueprint('reimbursement_controller', __name__)
 
 reimbursement_service = ReimbursementService()
 
-# @rc.route('/users/<user_id>/reimbursements', methods=['POST'])
-# def create_reimbursement(user_id):
-#     reimbursement_json_dictionary = request.get_json()
-#     reimbursement_object = Reimbursement(
-#         None,  # reimb_id
-#         reimbursement_json_dictionary['reimb_author'],  # reimb_author
-#         None,    # reimb_resolver
-#         reimbursement_json_dictionary['reimbursement_amount'],
-#         None,    # submitted timestamp
-#         None,    # resolved timestamp
-#         None,    # status
-#         reimbursement_json_dictionary['reimb_type'],
-#         reimbursement_json_dictionary['description'],
-#         None # reimbursement_json_dictionary['receipt']
-#     )  # constructor for Reimbursement object
-#     try:
-#         # Dictionary representation of the newly added user
-#         return reimbursement_service.create_reimbursement(user_id, reimbursement_object), 201  # 201 created
-#     except UserNotFoundError as e:
-#         return {
-#                    "message": str(e)
-#                }, 404
-    # except NegativeAccountBalanceError as e:
-    #     return {
-    #                "message": str(e)
-    #            }, 400
-
 @rc.route('/users/<username>/reimbursements', methods=['POST'])
 def create_reimbursement(username):
     reimbursement_json_dictionary = request.get_json()
@@ -61,14 +34,15 @@ def create_reimbursement(username):
 # Get all reimbursements for a single user
 @rc.route('/users/<username>/reimbursements')
 def get_all_reimbursements_by_username(username):
-        try:
-            return {
-                "reimbursements": reimbursement_service.get_all_reimbursements_by_username(username)
-            }
-        except UserNotFoundError as e:
-            return {
-                       "message": str(e)
-                   }, 404
+    user_filter_status = request.args.get("status")
+    try:
+        return {
+            "reimbursements": reimbursement_service.get_all_reimbursements_by_username(username, user_filter_status)
+        }
+    except UserNotFoundError as e:
+        return {
+                   "message": str(e)
+               }, 404
 
 
 # GET all user-reimb details
@@ -84,15 +58,6 @@ def get_reimbursements():
 # cell status = change + reimb_id
 # the element has value attribute
 # Where you call the function
-
-@rc.route('/reimbursements1')
-def get_filter_reimbursement_status():
-    filter_status = request.args.get("status")
-    print(filter_status)
-    return {
-        "reimbursements": reimbursement_service.get_filter_reimbursement_status(filter_status)
-    }
-
 
 @rc.route('/users/<username>/reimbursements/<reimb_id>', methods=['PUT'])
 def update_reimbursement_by_reimb_id(username, reimb_id):
@@ -124,26 +89,3 @@ def update_reimbursement_by_reimb_id(username, reimb_id):
     # if reimb exists and user exists: 404 (not found)
     # reimbursement already resolved/denied/not? : 403 (forbidden)
     # Invalid parameter for approved/denied encodeing number: 403 (forbidden)
-
-    # try:
-    #     update_reimb_json_dictionary = request.get_json()
-    #     return account_service.update_customer_account_by_account_id(
-    #         Account(  # Dao placeholders: id, balance, customer_id, account_type_id
-    #             account_id,  # id
-    #             json_dictionary['balance'],
-    #             customer_id,
-    #             json_dictionary['account_type_id']
-    #         )  # constructor for Account object
-    #     )
-    # except NegativeAccountBalanceError as e:
-    #     return {
-    #                "message": str(e)
-    #            }, 400
-    # except CustomerNotFoundError as e:
-    #     return {
-    #                "message": str(e)
-    #            }, 404
-    # except AccountNotFoundError as e:
-    #     return {
-    #                "message": str(e)
-    #            }, 404

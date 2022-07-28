@@ -48,7 +48,7 @@ def loginstatus():
     else:
         return{
             "message": "You are not logged in"
-        }
+        }, 400
 
 
 @uc.route('/logout', methods=['POST'])
@@ -56,7 +56,7 @@ def logout():
     session.clear()
     return {
         "message": "Successfully logged out"
-    }
+    }, 200
 
 
 

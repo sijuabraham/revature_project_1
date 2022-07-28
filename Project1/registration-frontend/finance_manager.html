@@ -4,31 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finance Manager</title>
-    <!-- <script defer src="/index.js"></script> -->
+    <title>Expense Reimbursement System - Finance Manager</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="./style.css">
     <script defer src="/finance_manager.js"></script>
 </head>
 <body>
-    <div>
-    <h1>Finance Manager</h1>
-    <br>
+    <h1>EXPENSE REIMBURSEMENT SYSTEM - FINANCE MANAGER</h1>
+    <div id="topNav">
+        <div>
+            <label for="status-search">Status:</label>
 
-    <label for="status-search">Status:</label>
-
-    <select name="status-filter" id="status-filter">
-        <option value="filter-by-status">Filter status</option>
-        <option value="pending">pending</option>
-        <option value="approved">approved</option>
-        <option value="denied">denied</option>
-    </select>
-
-    <!-- <select onchange="selectedSubjectName()" id="subjectName">
-    <option>Javascript</option>
-    <option>MySQL</option>
-    <option>MongoDB</option>
-    <option>Java</option>
-    </select> -->
+            <select name="status-filter" id="status-filter">
+                <option value="filter-by-status">Filter status</option>
+                <option value="pending">pending</option>
+                <option value="approved">approved</option>
+                <option value="denied">denied</option>
+            </select>
+        </div>
+        
+        <button id="logout" name="logout">Log Out</button>
     </div>
 
     <div class="table-container">
@@ -50,20 +45,6 @@
             </thead>
             <tbody id="data-output">
                 <!--Populate table data using JS-->
-
-                <!-- <div class="control">
-                    <label class="radio-1">
-                      <input type="radio" name="reimb-status" value="Approved">
-                      Approve
-                    </label>
-                    <label class="radio-1">
-                      <input type="radio" name="reimb-status" value="Denied">
-                        Deny
-                    </label>
-                  </div> -->
-                  <!-- <div>
-
-                  </div> -->
             </tbody>
         </table>
     </div>

@@ -10,27 +10,6 @@ dt = datetime.now(timezone.utc)
 
 class ReimbursementDao:
 
-    # def get_user_by_user_id(self, user_id, reimbursement_object):
-    #     with psycopg.connect(host=config['host'], port=config['port'], dbname=config['dbname'], user=config['user'],
-    #                    password=config['password']) as conn:
-    #         with conn.cursor() as cur:
-    #             cur.execute("select * from ers_users where user_id = %s", (user_id, ))
-    #             user_info = cur.fetchone()
-    #
-    #             if user_info is None:
-    #                 return None
-    #
-    #             user_id = user_info[0]
-    #             username = user_info[1]
-    #             password = user_info[2]
-    #             first_name = user_info[3]
-    #             last_name = user_info[4]
-    #             user_role = user_info[5]
-    #             email = user_info[6]
-    #
-    #             return User(user_id, username, password, first_name, last_name, user_role, email)
-
-
     def get_user_by_username(self, username):
         with psycopg.connect(host=config['host'], port=config['port'], dbname=config['dbname'], user=config['user'],
                        password=config['password']) as conn:
@@ -90,7 +69,7 @@ class ReimbursementDao:
 
 
     # Get all reimbursements for a single user
-    def get_all_reimbursements_by_username(self, username):
+    def get_all_reimbursements_by_username(self, username, user_filter_status):
         # Step 1: open a connection object
         with psycopg.connect(
                 host=config['host'],
@@ -101,7 +80,14 @@ class ReimbursementDao:
         ) as conn:
             # Automatically close the cursor
             with conn.cursor() as cur:
-                cur.execute("SELECT * FROM ers_reimbursements WHERE reimb_author = %s ORDER BY reimb_id ASC", (username,))
+                if user_filter_status == 'pending':
+                    cur.execute("SELECT * FROM ers_reimbursements WHERE status = %s AND reimb_author = %s ORDER BY reimb_id ASC", (user_filter_status, username))
+                elif user_filter_status == 'approved':
+                    cur.execute("SELECT * FROM ers_reimbursements WHERE status = %s AND reimb_author = %s ORDER BY reimb_id ASC", (user_filter_status, username))
+                elif user_filter_status == 'denied':
+                    cur.execute("SELECT * FROM ers_reimbursements WHERE status = %s AND reimb_author = %s ORDER BY reimb_id ASC", (user_filter_status, username))
+                else:
+                    cur.execute("SELECT * FROM ers_reimbursements WHERE reimb_author = %s ORDER BY reimb_id ASC", (username,))
 
                 reimb_list = []
 
