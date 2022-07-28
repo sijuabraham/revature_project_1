@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_session import Session
-
+from controller.reimbursement_controller import rc
 from controller.user_controller import uc
 from flask_cors import CORS
 
@@ -13,6 +13,7 @@ if __name__ == '__main__':
     # source where the HTML, CSS, and JS are originating from
 
     app.register_blueprint(uc)
+    app.register_blueprint(rc)
 
     app.run(port=8080, debug=True)
 

@@ -1,9 +1,8 @@
 from flask import Blueprint, request, session
-
 from exception.login import LoginError
+from service.user_service import UserService
 from exception.registration import RegistrationError
 from model.user import User
-from service.user_service import UserService
 
 uc = Blueprint('employee_controller', __name__)
 

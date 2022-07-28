@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Reimbursement</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script defer src="./create-reimbursement.js"></script>
+</head>
+<body>
+    <div class="field">
+        <label class="label">Reimbursement Amount:</label>
+        <div class="control">
+          <input id="reimb-amount" class="input" type="text" placeholder="50">
+        </div>
+    </div>
+
+    <div class="control">
+        <label class="radio">
+          <input type="radio" name="reimb-type" value="Food">
+          Food
+        </label>
+        <label class="radio">
+          <input type="radio" name="reimb-type" value="Lodging">
+          Lodging
+        </label>
+        <label class="radio">
+          <input type="radio" name="reimb-type" value="Travel">
+          Travel
+        </label>
+        <label class="radio">
+            <input type="radio" name="reimb-type" value="Other">
+            Other
+        </label>
+      </div>
+
+      <div class="field">
+        <label class="label">Description</label>
+        <div class="control">
+          <textarea id="reimb-description" class="textarea" placeholder="Textarea"></textarea>
+        </div>
+      </div>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link" id="submit-reimb-btn">Submit</button>
+        </div>
+        <!-- <div class="control">
+          <button class="button is-link is-light" id="cancel-reimb-btn">Cancel</button>
+        </div> -->
+      </div>
+</body>
+</html>
