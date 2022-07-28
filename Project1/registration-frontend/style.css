@@ -1,0 +1,40 @@
+#topNav {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    height: 50px;
+    margin-top: 30px;
+}
+
+#createReimbBtn {
+    padding: 5px;
+    background-color: green;
+}
+
+#logout {
+    padding: 5px;
+    background-color: red;
+}
+
+a {
+    color: white;
+}
+
+#status-filter{
+    padding: 5px;
+}
+
+h1 {
+    font-size: 28px;
+    padding: 5px;
+    margin-top:30px;
+    text-align: center;
+    color:rgb(76, 76, 228);
+}
+
+#createReimbContainer {
+    background-color: aquamarine;
+    padding:30px;
+    margin: 30px;
+}

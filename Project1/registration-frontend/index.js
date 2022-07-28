@@ -64,7 +64,7 @@ async function get_all_details(){
 
      if (res.status == 200)
     { 
-        let data = await res.json();  //ERROR
+        let data = await res.json();
         console.log("Logged in!")
         console.log(data);
 
