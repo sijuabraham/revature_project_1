@@ -11,8 +11,6 @@ class Reimbursement:
         self.description = description
         self.receipt = receipt
 
-
-
     def to_dict(self):
         return {
             "reimb_id" : self.reimb_id,

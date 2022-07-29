@@ -60,21 +60,3 @@ def logout():
 
 
 
-
-
-# @uc.route('/users', methods=['POST'])
-# def add_user():
-#     user_json_dictionary = request.get_json()
-#     user_object = User(None, user_json_dictionary['username'], user_json_dictionary['password'],
-#                        user_json_dictionary['first_name'], user_json_dictionary['last_name'],
-#                        user_json_dictionary['gender'], user_json_dictionary['phone_number'],
-#                        user_json_dictionary['email_address'], user_json_dictionary['role_1'])
-#     try:
-#         added_user = user_service.add_user(user_object)
-#     except RegistrationError as e:
-#         return{
-#             "messages": e.messages
-#         }, 400
-#
-#     return added_user, 201
-

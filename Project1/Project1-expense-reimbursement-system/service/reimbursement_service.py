@@ -10,23 +10,10 @@ class ReimbursementService:
     def __init__(self):
         self.reimbursement_dao = ReimbursementDao()
 
-    # Create a new account for a customer with id x
-    # def create_reimbursement(self, user_id, reimbursement_object):
-    #
-    #     if self.reimbursement_dao.get_user_by_user_id(user_id, reimbursement_object) is None:
-    #         raise UserNotFoundError(f"Customer with id {reimbursement_object.user_id} was not found")
-    #     # if reimbursement_object < 0:
-    #     #     raise NegativeAccountBalanceError("Account balance cannot be less than 0")
-    #
-    #     created_reimbursement_object = self.reimbursement_dao.create_reimbursement(user_id, reimbursement_object)
-    #     return created_reimbursement_object.to_dict()
-
     def create_reimbursement(self, username, reimbursement_object):
 
         if self.reimbursement_dao.get_user_by_username(username) is None:
             raise UserNotFoundError(f"User with username {username} was not found")
-        # if reimbursement_object < 0:
-        #     raise NegativeAccountBalanceError("Account balance cannot be less than 0")
 
         created_reimbursement_object = self.reimbursement_dao.create_reimbursement(username, reimbursement_object)
         return created_reimbursement_object.to_dict()
@@ -48,15 +35,6 @@ class ReimbursementService:
             list_of_reimbursement_dictionaries.append(reimbursement_obj.to_dict())
 
         return list_of_reimbursement_dictionaries
-
-    # def get_filter_reimbursement_status(self, filter_status):
-    #     list_of_reimbursement_objects = self.reimbursement_dao.get_filter_reimbursement_status(filter_status)
-    #
-    #     list_of_reimbursement_dictionaries = []
-    #     for reimbursement_obj in list_of_reimbursement_objects:
-    #         list_of_reimbursement_dictionaries.append(reimbursement_obj.to_dict())
-    #
-    #     return list_of_reimbursement_dictionaries
 
     def update_reimbursement(self, username, reimb_id, update_reimbursement_object):
         update_reimb_object = self.reimbursement_dao.update_reimbursement(username, reimb_id, update_reimbursement_object)

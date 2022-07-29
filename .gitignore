@@ -2,3 +2,8 @@ Project1/.idea
 Project1/Project1-expense-reimbursement-system/venv
 Project1/Project1-expense-reimbursement-system/.idea
 Project1/Project1-expense-reimbursement-system/.env
+Project1/Project1-expense-reimbursement-system/controller/_pycache_
+Project1/Project1-expense-reimbursement-system/service/_pycache_
+Project1/Project1-expense-reimbursement-system/dao/_pycache_
+Project1/Project1-expense-reimbursement-system/exception/_pycache_
+Project1/Project1-expense-reimbursement-system/model/_pycache_

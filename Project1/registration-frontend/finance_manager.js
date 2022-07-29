@@ -45,25 +45,6 @@ dropDown.addEventListener('change', async function(event) {
     }
 }) 
 
-
-// async function selectedStatusFilter(tempo){
-
-//   let res = await fetch(`http://127.0.0.1:8080/reimbursements?status=${tempo}`, {
-//         headers: {
-//           'Accept': 'application/json'
-//         }
-//       });
-//       console.log("This is inside fetch: " + tempo);
-//       let data = await res.json(); // res.json() returns a promise
-//       console.log(data["reimbursements"]);
-//       reimbursements_details_array = data["reimbursements"]
-//       for (let reimbursements of reimbursements_details_array){
-//           console.log(reimbursements);
-//           user_reimbursement(reimbursements);
-//           // test(reimbursements)
-//       }
-// }
-
 //===============================================================================================
 document.addEventListener('DOMContentLoaded', finance_manager_window_load);
 
@@ -84,7 +65,7 @@ async function finance_manager_window_load(){
         for (let reimbursements of reimbursements_details_array){
             console.log(reimbursements);
             user_reimbursement(reimbursements);
-            // test(reimbursements)
+            
         }    
       }
 
@@ -142,12 +123,9 @@ function user_reimbursement(reimbursements){
   radioInput1.setAttribute('value', 'Approved');
   label1.appendChild(radioInput1);
 
-  // edit by Bipul from here
-
   radioInput1.addEventListener("click", ()=>{
      reimbursementId = reimbursements.reimb_id
      status1 = "approved"
-     //status1 = radioInput1.checked.value
   })
 
   radioInput1.addEventListener("click", sush)
@@ -175,13 +153,6 @@ function user_reimbursement(reimbursements){
 
   label2.appendChild(radioInput2);  
 
-  // radioInput2.addEventListener("click", sushi) //******************* */
-
-  // var button = document.createElement('button');
-  // button.type = 'button';
-  // button.innerHTML = 'Submit';
-  // button.id = 'status-btn';
-
 
   row.appendChild(idCell);
   row.appendChild(authorCell);
@@ -195,45 +166,10 @@ function user_reimbursement(reimbursements){
   row.appendChild(receiptCell);
   row.appendChild(label1);
   row.appendChild(label2);
-  // row.appendChild(button);
-  // row.appendChild(container1);
 
   userBodyElement.appendChild(row);
 }
 
-
-
-
-
-// function sush(idCellValue){
-
-//   for(i = 0; i < actionType.length; i++) {
-//     if(actionType[i].checked){
-//     // document.getElementById('reimb-type').innerHTML
-//         var statusChange = reimbType[i].value;
-//     }
-//   }
- 
-  
-//   console.log("Approve radio button is working");
-//   change_status(idCell);
-// }
-
-// function sushi(idCell){
-//   for(i = 0; i < actionType.length; i++) {
-//     if(actionType[i].checked){
-//     // document.getElementById('reimb-type').innerHTML
-//         var statusChange = reimbType[i].value;
-//     }
-//   }
-//   console.log(statusChange);
-//   console.log(username);
-//   console.log(idCell.innerText);
-//   // has the fetch here
-//   console.log("Deny radio button is working");
-//   change_status(idCell);
-
-// }
 
 async function sush(){
   let res = await fetch(`http://127.0.0.1:8080/users/${username}/reimbursements/${reimbursementId}`, {
