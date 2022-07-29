@@ -9,7 +9,7 @@ if __name__ == '__main__':
     CORS(app, supports_credentials=True)
     app.secret_key = 'siju123$mariyam456'
     app.config['SESSION_TYPE'] = 'filesystem'
- # Instructs our webserver to tell browsers that any origin is allowed. By origin we mean the
+    # Instructs our webserver to tell browsers that any origin is allowed. By origin we mean the
     # source where the HTML, CSS, and JS are originating from
 
     app.register_blueprint(uc)

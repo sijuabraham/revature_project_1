@@ -7,10 +7,6 @@ class User:
         self.last_name = last_name
         self.user_role = user_role
         self.email = email
-        # self.gender = gender
-        # self.phone_number = phone_number
-
-
 
     def to_dict(self):
         return {

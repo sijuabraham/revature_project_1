@@ -88,4 +88,4 @@ def update_reimbursement_by_reimb_id(username, reimb_id):
     # Raise specific exception: 403 (Forbidden)
     # if reimb exists and user exists: 404 (not found)
     # reimbursement already resolved/denied/not? : 403 (forbidden)
-    # Invalid parameter for approved/denied encodeing number: 403 (forbidden)
+    # Invalid parameter for approved/denied encoding number: 403 (forbidden)
